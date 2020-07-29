@@ -1,14 +1,14 @@
 import React from 'react';
-import Menu from './components/Menu';
-import dadosiniciais from './data/dados_iniciais.json';
-import BannerMain from './components/BannerMain';
-import Carousel from './components/Carousel';
-import Footer from './components/Footer';
+import dadosiniciais from '../../data/dados_iniciais.json';
+import BannerMain from '../../components/BannerMain';
+import Carousel from '../../components/Carousel';
+import PageDefault from '../../components/PageDefault'
 
-function App() {
+
+function Home() {
   return (
     <div style= {{background: "#141414"}}>
-      <Menu></Menu>
+      <PageDefault>
       <BannerMain videoTitle ={dadosiniciais.categorias[0].titulo} url={dadosiniciais.categorias[0].videos[0].url} videoDescription={"O que é front-end? O que faz uma desenvolvedora front-end"}>
       </BannerMain>
 
@@ -23,8 +23,10 @@ function App() {
       <Carousel ignoreFirstVideo category={dadosiniciais.categorias[4]}></Carousel>
 
       <Carousel ignoreFirstVideo category={dadosiniciais.categorias[5]}></Carousel>
+
+      </PageDefault>
     </div>
   );
 }
 
-export default App;
+export default Home;
