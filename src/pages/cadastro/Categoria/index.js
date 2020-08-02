@@ -6,9 +6,10 @@ import Button from '../../../components/Button';
 
 function CadastroCategoria() {
   const valoresIniciais = {
-    nome: '',
+    id: 0,
+    titulo: '',
     descricao: '',
-    cor: '',
+    cor: '#000000',
   };
 
   const [categorias, setCategorias] = useState([]);
@@ -29,7 +30,8 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    const URL = 'http://localhost:8080/categorias';
+    const URL = window.location.hostname.includes('localhotst') ? 'http://localhost:8080/categorias'
+      : 'https://phflix.herokuapp.com/categorias';
     fetch(URL).then(async (response) => {
       const resposta = await response.json();
       setCategorias(
@@ -42,7 +44,7 @@ function CadastroCategoria() {
     <PageDefault>
       <h1>
         Cadastro de Categoria:
-        {values.nome}
+        {values.titulo}
       </h1>
 
       <form
@@ -56,8 +58,8 @@ function CadastroCategoria() {
         <FormField
           label="Nome da Categoria"
           type="text"
-          name="nome"
-          value={values.nome}
+          name="titulo"
+          value={values.titulo}
           onChange={handleChange}
         />
 
@@ -84,7 +86,7 @@ function CadastroCategoria() {
 
       <ul>
         {categorias.map((categoria) => (
-          <li key={`${categoria.nome}`}>{categoria.nome}</li>
+          <li key={`${categoria.id}`}>{categoria.titulo}</li>
         ))}
       </ul>
 
